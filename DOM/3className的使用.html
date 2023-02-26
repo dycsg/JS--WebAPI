@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        .pos{
+            width: 300px;
+            height: 250px;
+            background-color: rgb(219, 55, 82);
+        }
+        .dyc{
+            width: 200px;
+            height: 200px;
+            background-color: rgb(192, 255, 192);
+        }
+        .dycc{
+            width: 260px;
+            height: 220px;
+            background-color: rgb(2, 245, 2);
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="dyc"></div>
+
+    <script>
+        // 获取元素
+        let box = document.querySelector('.box');
+        box.className = 'box pos'    //不需要加点  会覆盖类
+
+        let dyc = document.querySelector('.dyc');
+        // 方法 
+        // 添加类
+        box.classList.add('dycc')
+        // 移除类
+        box.classList.remove('dycc')
+        // 切换类
+        box.classList.toggle('dyc')
+    </script>
+</body>
+</html>

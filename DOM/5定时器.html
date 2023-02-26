@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        // 获取元素
+        setInterval(function () {
+            console.log('dyc');
+        }, 2000)
+        // 定时器是有序号的 1
+
+        // 定时器调用函数  注意不需要加（）
+        function set() {
+            console.log('我最n');
+        }
+        let num = setInterval(set, 1000)
+        // 定时器是有序号的 2
+
+        // 清除定时器
+        clearInterval(num)
+        // 清除上面的定时器
+    </script>
+</body>
+
+</html>
