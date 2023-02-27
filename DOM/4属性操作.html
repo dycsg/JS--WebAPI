@@ -28,12 +28,38 @@
     <input type="text" placeholder="请输入密码...">
     <img src="" alt="">
 
+    <!-- 案例1 -->
+    <textarea name="" id="" cols="30" rows="10">
+        阅读用户协议  曾多年从事多年彻底删除的产品四代机常见的四川多试几次是第几次水浇地成都市就此事大家雌激素地产就打死就此事点击菜单设计参加第四次第几次首都机场酒店死几次但是几次的数据传递检查的常见的四川但是
+        曾多年从事多年彻底删除的产品四代机常见的四川多试几次是第几次水浇地成都市就此事大家雌激素地产就打死就此事点击菜单设计参加第四次第几次首都机场酒店死几次但是几次的数据传递检查的常见的四川但是
+    </textarea>
+    <button disabled="disabled">我已经阅读用户协议(6)</button>
+
     <script>
         // 获取元素
         let inp = document.querySelector('input')
         inp.type = 'password'
         disabled = true    //按钮是否禁用 
         checkbox = true
+
+
+
+        // 案例1
+        let btn = document.querySelector('button')
+        var i = 6
+        timer = setInterval(function() {
+            console.log(i);
+            if(i === 0){
+                clearInterval(timer)
+                btn.disabled = false
+            }else{
+                i--
+                btn.innerHTML = `我已经阅读用户协议(${i})`
+                
+            }
+        },1000)
+
+
     </script>
 </body>
 </html>
