@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            display: none;
+        }
+        input{
+            border: 1px solid green;
+        }
+    </style>
+</head>
+<body>
+    <input type="search" name="" id="">
+    <div class="box"></div>
+    <script>
+        // 获取元素
+        let inp = document.querySelector('input')
+        let box = document.querySelector('.box')
+        // 获得焦点
+        inp.addEventListener('focus', function(){
+            box.style.display = 'block'
+            inp.classList.add('input')
+        })
+        // 失去焦点
+        inp.addEventListener('blur', function(){
+            box.style.display = 'none'
+        })
+    </script>
+</body>
+</html>

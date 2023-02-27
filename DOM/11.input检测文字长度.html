@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+        .box{
+            width: 50px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <textarea name="" id="" cols="30" rows="10" maxlength="200"></textarea>
+    <div class="box">0/200</div>
+    
+
+    <script>
+        // 获取元素
+        let box = document.querySelector('.box')
+        let textarea = document.querySelector('textarea')
+        textarea.addEventListener('input', function(e) {
+            // console.log(textarea.value.length);
+            box.innerHTML = textarea.value.length + '<span>/200</span>'
+            if(textarea.value.length === 200){
+                textarea.readonly = "readonly"
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .box {
+            width: 40px;
+            height: 40px;
+            background-color: pink;
+        }
+
+        .btn1 .btn2 {
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" value="1">
+    <button class="btn1">加+</button>
+    <button class="btn2">减-</button>
+
+    <script>
+        // 获取元素
+        let input = document.querySelector('input');
+        let btn1 = document.querySelector('.btn1')
+        let btn2 = document.querySelector('.btn2')
+        btn1.addEventListener('click', function (e) {
+            input.value++
+            btn2.disabled = false
+        })
+        btn2.addEventListener('click', function (e) {
+            input.value--
+            if (input.value <= 1) {
+                btn2.disabled = true
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .box {
+            width: 200px;
+            height: 40px;
+            background-color: pink;
+        }
+
+        .btn1 {
+            margin-right: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    名字是:<div class="box"></div>
+    <button class="btn1">开始</button>
+    <button class="btn2">暂停</button>
+    <script>
+        // 获取元素
+        let box = document.querySelector('.box')
+        let btn1 = document.querySelector('.btn1')
+        let btn2 = document.querySelector('.btn2')
+        // 定时器和random随机函数
+        let random = 0
+        let timer = 0
+
+        // 随机函数
+        function getRandom(max, min) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        // 奖项数组
+        let data = ['丁扬财', '赵元清', '谢艳玲', '金书扬', '王勇', '林子按', '光头']
+        // 开始的事件
+        btn1.addEventListener('click', function () {
+            timer = setInterval(function () {
+                random = getRandom(0, data.length - 1)
+                box.innerHTML = data[random]
+            }, 40)
+            // 最后一个禁用
+            if (data.length == 1) {
+                btn1.disabled = true
+                btn2.disabled = true
+            }
+        })
+        // 结束的事件
+        btn2.addEventListener('click', function () {
+            clearInterval(timer)
+            // 删除数组元素 splice(从哪删,删几个)
+            data.splice(random, 1)
+            console.log(data);
+        })
+
+    </script>
+</body>
+
+</html>

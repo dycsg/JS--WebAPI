@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <button>开始</button>
+
+    <script>
+        // 获取元素
+        let box = document.querySelector('.box')
+        let btn = document.querySelector('button')
+
+        // 随机函数
+        function getRandom(max, min) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        // 奖项数组
+        let data = ['第一名','第二名', '第三名', '第四名', '第五名', '第六名', '第七名']
+
+        btn.addEventListener('click', function () {
+            let random = getRandom(0, data.length - 1)
+            // console.log(random);
+            // console.log(data[random]);
+            box.innerHTML = data[random]
+
+            // 删除数组元素 splice(从哪删,删几个)
+            data.splice(random,1)
+            // 如果剩最后一个就禁用按钮
+            if(data.length == 1){
+                btn.disabled = true
+                btn.innerHTML = '已经抽完了'
+            }
+        })
+
+    </script>
+</body>
+
+</html>

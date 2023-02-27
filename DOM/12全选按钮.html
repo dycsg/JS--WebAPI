@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        input:nth-child(1){
+            width: 24px;
+            height: 24px;
+        }
+    </style>
+</head>
+<body>
+    <input type="checkbox" name="" id="" class="max">
+    <span>全选</span>
+    <br>
+    <input type="checkbox" name="" id="" class="min">
+    <input type="checkbox" name="" id="" class="min">
+    <input type="checkbox" name="" id="" class="min">
+    <input type="checkbox" name="" id="" class="min">
+    <input type="checkbox" name="" id="" class="min">
+    <script>
+        // 获取元素
+        let max = document.querySelector('.max')
+        let min = document.querySelectorAll('.min')
+        let span = document.querySelector('span')
+        max.addEventListener('click', function(){
+            // console.log(max.checked);
+            for(let i = 0; i < min.length; i++){
+                min[i].checked = max.checked
+            }
+
+            if(max.checked){
+                span.innerHTML = '全选'
+            }else{
+                span.innerHTML = '反选'
+            }
+        })
+
+        // 小按钮的做法
+        for(let i = 0; i < min.length; i++){
+            min[i].addEventListener('click', function(){
+                // 只要点击任何一个小按钮,都循环遍历小按钮
+                for(let j = 0; j < min.length; j++){
+                    if(min[j].checked === false){
+                        max.checked = false    //改变大复选框的状态
+                        return     //下面的代码不执行   退出函数
+                    }
+                }
+                // 没有false就是被选中了
+                max.checked = true
+                span.innerHTML = '反选'
+            })
+        }
+        // break 结束循环
+        // continue 结束本次循环 继续下一次循环
+    </script>
+</body>
+</html>
