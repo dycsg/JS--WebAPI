@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .box {
+            width: 820px;
+            height: 200px;
+            margin: 0 auto;
+        }
+
+        button,
+        span {
+            float: right;
+            margin-left: 5px;
+        }
+
+        .size {
+            float: right;
+        }
+
+        i {
+            color: red;
+            float: right;
+        }
+
+        li {
+            width: 820px;
+            height: 85px;
+            margin: 15px auto;
+            overflow: hidden;
+            border-bottom: 1px solid black;
+            display: flex;
+            position: relative;
+        }
+
+        img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+
+        .title {
+            margin-left: 10px;
+        }
+
+        .shijian {
+            margin-top: 5px;
+            margin-left: 10px;
+            font-size: 12px;
+            color: darkgray;
+        }
+
+        .gb {
+            position: absolute;
+            left: 98%;
+            top: 5%;
+        }
+
+        .num {
+            position: absolute;
+            top: 40%;
+            left: 10%;
+        }
+
+        .gb {
+            cursor: pointer;
+            ;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <textarea name="" id="" cols="100" rows="10" maxlength="200"
+            style="padding-left: 4px; font-size: 16px;"></textarea>
+        <button class="fbbtn">发布</button>
+        <i>/200</i><span class="size">0</span>
+    </div>
+    <ul class="ul">
+        <li>
+            <!-- <img src="/img/01 (1).jpg" alt="">
+            <div class="title">模型</div>
+            <div class="shijian">234343</div>
+            <div class="num">cndcjnsdjcsdnjdj</div>
+            <div class="gb">x</div> -->
+        </li>
+    </ul>
+
+    <script>
+        // 获取元素
+        let textarea = document.querySelector('textarea');
+        let FBbtn = document.querySelector('.fbbtn');
+        let size = document.querySelector('.size');
+        let ul = document.querySelector('ul');
+
+        // 数据
+        let data = [
+            { uname: '丁延迟', imaSrc: '/img/01 (1).jpg' },
+            { uname: '谢艳玲', imaSrc: '/img/01 (2).jpg' },
+            { uname: '王勇', imaSrc: '/img/01 (3).jpg' },
+            { uname: '驾驶员', imaSrc: '/img/01 (4).jpg' },
+            { uname: '数学系', imaSrc: '/img/01 (1).jpg' },
+            { uname: '型设计', imaSrc: '/img/01 (4).jpg' },
+        ]
+        // 1.检查长度
+        textarea.addEventListener('input', function () {
+            // console.log(textarea.value.length);
+            size.innerHTML = this.value.length
+            if (textarea.value.length === 200) {
+                // console.log('11');
+                FBbtn.disabled = true;
+            }
+        })
+        // 2.发布不能为空      trim()去空格
+        FBbtn.addEventListener('click', function () {
+            if (textarea.value.trim() === '') {
+                // 清空文本域的空格 
+                textarea.value = ''
+                // 清空数值
+                size.innerHTML = 0
+                return alert('请输入内容')
+
+            } else {
+                alert('发布成功')
+
+                // 随机函数
+                function getRandom(max, min) {
+                    return Math.floor(Math.random() * (max - min + 1)) + min;
+                }
+                let shuiji = getRandom(0, data.length - 1)
+
+                // 3.创建小li 
+                let li = document.createElement('li')
+                li.innerHTML = `
+                    <img src="${data[shuiji].imaSrc}" alt="">
+                    <div class="title">${data[shuiji].uname}</div>
+                    <div class="shijian">${new Date().toLocaleString()}</div>
+                    <div class="num">${textarea.value}</div>
+                    <div class="gb">x</div>
+                `
+
+                // 4.删除操作
+                let del = li.querySelector('.gb')
+                del.addEventListener('click', function () {
+                    // 点击的是x 删除的是li
+                    ul.removeChild(li)
+                })
+
+                // 发布到前面 
+                ul.insertBefore(li, ul.children[0])
+
+
+                // 5. 清空文本域 
+                textarea.value = ''
+                // 清空数值
+                size.innerHTML = 0
+            }
+        })
+
+        // 按回车发布
+        textarea.addEventListener('keyup', function (e) {
+            // console.log(e.key);  得到用户按下了哪个键
+            if (e.key === 'Enter') {
+                // 自动触发点击按钮   需要加括号
+                FBbtn.click()
+                // 5. 清空文本域 
+                textarea.value = ''
+                // 清空数值
+                size.innerHTML = 0
+            }
+        })
+        // 总结:toLocaleString() 得到系统当前的时间
+        // insertBefore 追加到前面
+        // trim()清除两边空格
+        // removeChild() 如果是变量不需要加引号
+        // 获取刚刚创建好的元素 要用它的父元素.querySelector('要获取的元素')     let del = li.querySelector('.gb')
+
+        // 重绘不一定会引起回流, 回流一定会引起重绘
+        // 重会指不影响布局
+        // 回流指影响布局
+    </script>
+</body>
+
+</html>

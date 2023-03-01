@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .box {
+            margin: 0 auto;
+            width: 700px;
+            height: 400px;
+            background-color: pink;
+        }
+
+        img {
+            width: 150px;
+            height: 100px;
+        }
+        li{
+            float: left;
+            margin: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul class="ul">
+
+        </ul>
+    </div>
+
+    <script>
+        // 数据
+        let data = [
+            {
+                src: '/img/01 (1).jpg',
+                title: '超级菜鸟的场地',
+                num: 1234
+            },
+            {
+                src: '/img/01 (2).jpg',
+                title: '首先是你是场地',
+                num: 50224
+            },
+            {
+                src: '/img/01 (3).jpg',
+                title: '成都南京成都的场地',
+                num: 3334
+            },
+            {
+                src: '/img/01 (4).jpg',
+                title: '差不多的地',
+                num: 1124
+            },
+
+        ]
+        // 获取元素
+        let ul = document.querySelector('.ul')
+        // 1.根据数据的个数，循环创建li
+        for (let i = 0; i < data.length; i++) {
+            // 2再创建小li
+            let li = document.createElement('li')
+
+            // 4.先准备数据再追加
+            li.innerHTML = `
+            <img src="${data[i].src}" alt="">
+            <h4>${data[i].title}</h4>
+            <span>${data[i].num}人在学习</span>
+            `
+
+            // 3.再追加到ul里面 不用加引号
+            ul.appendChild(li)
+        }
+    </script>
+</body>
+
+</html>

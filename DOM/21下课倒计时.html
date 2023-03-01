@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .box {
+            margin: 50px auto;
+            width: 300px;
+            height: 350px;
+            background-color: pink;
+            flex-direction: column;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .jt {
+            margin: 10px auto;
+        }
+
+        h2 {
+            margin: 10px auto;
+            color: azure;
+        }
+        .shi,.feng,.miao{
+            background-color: black;
+            color: aliceblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="jt"></div>
+        <h2>下课倒计时</h2>
+        <br>
+        <div class="o">
+            <span class="shi"></span>
+            <i>:</i>
+            <span class="feng"></span>
+            <i>:</i>
+            <span class="miao"></span>
+        </div>
+        <br>
+        <div class="xzs"></div>
+        <br>
+        <div class="Day"></div>
+    </div>
+    <input type="text" placeholder="请输入下课时间。。">
+    <button>确定</button>
+    <script>
+        // 获取元素
+        let jt = document.querySelector('.jt')
+        let xzs = document.querySelector('.xzs')
+
+        let shis = document.querySelector('.shi')
+        let fengs = document.querySelector('.feng')
+        let miaos = document.querySelector('.miao')
+        let Day = document.querySelector('.Day')
+
+        let inp = document.querySelector('input')
+        let btn = document.querySelector('button')
+       
+        getTime()
+
+        setInterval(getTime, 1000)
+        
+        function getTime() {
+            // 今天是
+            let date = new Date()
+            let nian = date.getFullYear()
+            let yue = date.getMonth() + 1
+            yue = yue < 10 ? '0' + yue : yue     //三元表达式 
+            let ri = date.getDate()
+            ri = ri < 10 ? '0' + ri : ri     //三元表达式 
+            jt.innerHTML = `今天是：${nian}年${yue}月${ri}`
+
+            // 现在是
+            let shi = date.getHours()
+            shi = shi < 10 ? '0' + shi : shi
+            let fen = date.getMinutes()
+            fen = fen < 10 ? '0' + fen : fen
+            let miao = date.getSeconds()
+            miao = miao < 10 ? '0' + miao : miao
+            xzs.innerHTML = `现在是：${shi}:${fen}:${miao}`
+            
+            let arr = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六',]
+            let day = date.getDay()
+            Day.innerHTML = arr[day]
+            // 倒计时    现在的 减去将来的
+            
+            // 现在的时间戳
+            let dates = +new Date()
+            // 将来的时间 2023-3-1 12:00:00
+            // btn.addEventListener('click', function(){
+            //      last = inp.value
+            // })
+            let last = +new Date('2024-3-1 12:00:00')
+            
+           
+            let sum = (last - dates) / 1000          //转换
+
+            let h = parseInt(sum / 60 / 60 % 24)
+            h = h < 10 ? '0' + h : h      //补零
+            let m = parseInt(sum / 60 % 24)
+            m = m < 10 ? '0' + m : m
+            let s = parseInt(sum % 60)
+            s = s < 10 ? '0' + s : s
+
+            shis.innerHTML = `${h}`
+            fengs.innerHTML = `${m}`
+            miaos.innerHTML = `${s}`
+        }
+        // 总结：定时器调用函数不需要加引号
+        // 三元表达式补零 记得赋值
+    </script>
+</body>
+
+</html>

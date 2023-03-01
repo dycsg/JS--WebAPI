@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .box {
+            width: 270px;
+            height: 45px;
+            background-color: pink;
+            line-height: 45px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+
+    <script>
+        let arr = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六',]
+        // 获取元素
+        let box = document.querySelector('.box')
+
+        getTime() //先定义是因为有2秒空白期 
+
+        setInterval(getTime(), 1000)
+
+        function getTime() {
+            
+            let date = new Date()   //一定要写在里面
+            let n = date.getFullYear()
+            let y = date.getMonth() + 1
+            let m = date.getDate()
+
+            let d = date.getHours()
+            let h = date.getMinutes()
+            let s = date.getSeconds()
+
+            let x = date.getDay()
+
+            // box.innerHTML = '今天是：' + n + '-' + y + '-' + m + ' ' + d + ':' + h
+            box.innerHTML = `今天是：${n}-${y}-${m} ${d}:${h}:${s} ${arr[x]}`
+        }
+    </script>
+</body>
+
+</html>

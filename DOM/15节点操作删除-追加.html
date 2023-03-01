@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>da</li>
+        <li>xi</li>
+    </ul>
+
+    <script>
+
+        // 先创建再追加
+
+        // 创建元素
+        let div = document.createElement('div');
+        div.className = 'box'
+
+
+        // 追加元素   
+        let li = document.createElement('li');
+        li.innerHTML = 'ddd'
+        let ul = document.querySelector('ul');
+        ul.appendChild(li);       //追加到后面  
+        console.log(ul);
+
+        // 追加到前面  创建元素 添加元素 放到ul.的1个
+        let li = document.createElement('li');
+        // insertBefore(子元素, 放到哪个元素前面)   
+        ul.insertBefore(li, ul.children[1]) 
+    </script>
+</body>
+</html>

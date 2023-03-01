@@ -20,20 +20,28 @@
     </style>
 </head>
 <body>
-    <!-- 案例1 -->
-    <div class="box">
-        <button> X </button>
-    </div>
-    
+    <button>删除</button>
+    <ul>
+        <li>打死我</li>
+    </ul>
+
+
+    <ul>
+
+    </ul>
 
     <script>
-        // 获取元素
-        // let box = document.querySelector('.box')
+        // cloneNode()  布尔值 如果括号里面是空false的 就复制不复制元素里面的内容
+                    //    如果true 就复制里面的内容
+        let ul = document.querySelector('ul')
+        let newul = ul.cloneNode(true)
+
+
+
         let btn = document.querySelector('button')
-        btn.addEventListener('click', function(){
-            // btn.parentNode.style.display = 'none'
-            this.parentNode.style.display = 'none'
-        })
+       btn.addEventListener('click', function(){
+        ul.removeChild(ul.children[0])
+       })
 
     </script>
 </body>

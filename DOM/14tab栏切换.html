@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .box {
+            width: 600px;
+            height: 45px;
+            background-color: pink;
+            margin: 0 auto;
+            ;
+        }
+
+        span {
+
+            line-height: 45px;
+            margin: 45px 45px;
+        }
+
+        img {
+            height: 65px;
+            display: none;
+        }
+
+        .content {
+            background-color: brown;
+        }
+
+        .actiov {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="all">
+            <span class="content">dyc</span>
+            <span>zyq</span>
+            <span>lza</span>
+            <span>xyl</span>
+            <span>qcx</span>
+        </div>
+        <div class="bll">
+            <img src="/img/01 (1).jpg" alt="" class="actiov">
+            <img src="/img/01 (2).jpg" alt="">
+            <img src="/img/01 (3).jpg" alt="">
+            <img src="/img/01 (4).jpg" alt="">
+            <img src="/img/01 (1).jpg" alt="">
+        </div>
+    </div>
+
+
+    <script>
+        let span = document.querySelectorAll("span")
+        let img = document.querySelectorAll("img")
+        for(let i= 0; i < span.length; i++) {
+            span[i].addEventListener("click", function(e) {
+                // 先清除原本的类
+                document.querySelector('.content').classList.remove("content")
+                this.classList.add('content')
+                // 图片
+                document.querySelector('.actiov').classList.remove("actiov")
+                img[i].classList.add('actiov')
+            })
+        }
+    </script>
+</body>
+
+</html>

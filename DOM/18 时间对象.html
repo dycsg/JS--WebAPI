@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <script>
+        // new 实例化 
+        // 得到当前系统的时间
+        let date = new Date()
+        console.log(date);     //Tue Feb 28 2023 16:13:32 GMT+0800 (中国标准时间)
+
+        // 如果括号里面加时间就等于赋值   用于倒计时 秒杀
+        let dates = new Date('2023-2-28')
+        console.log(dates); //Tue Feb 28 2023 00:00:00 GMT+0800 (中国标准时间)
+
+        console.log(date.getFullYear()) //年份
+        console.log(date.getMonth() + 1);     //月份 记得加1 
+        console.log(date.getDate());     //日 
+        console.log(date.getHours());     //时
+        console.log(date.getMinutes());     //分
+        console.log(date.getSeconds());     //秒
+        console.log(date.getDay());     //星期几 0-6
+
+        
+    </script>
+</body>
+
+</html>

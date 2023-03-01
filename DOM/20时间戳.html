@@ -1,40 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        *{
+        * {
             padding: 0;
             margin: 0;
             list-style: none;
             text-decoration: none;
         }
-        .box{
+
+        .box {
             width: 200px;
             height: 200px;
             background-color: pink;
         }
     </style>
 </head>
+
 <body>
-    <!-- 案例1 -->
-    <div class="box">
-        <button> X </button>
-    </div>
-    
+    <div class="box"></div>
+    <button></button>
 
     <script>
         // 获取元素
-        // let box = document.querySelector('.box')
-        let btn = document.querySelector('button')
-        btn.addEventListener('click', function(){
-            // btn.parentNode.style.display = 'none'
-            this.parentNode.style.display = 'none'
-        })
+        let box = document.querySelector('.box')
 
+        // 时间戳总的毫秒数 独一无二  getTime()      +new Date
+        // 用将来的时间戳 减去 现在的时间戳 就是 剩余的毫秒数   再转换
+        let date = new Date();
+        // 第一种
+        console.log(date.getTime());
+        // 第二种
+        console.log(+new Date)
     </script>
 </body>
+
 </html>
