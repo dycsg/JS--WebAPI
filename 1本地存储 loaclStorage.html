@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1 存储普通数据
+        // localStorage.setItem('键', '值')
+        localStorage.setItem('nenm', '赵元清')
+
+        // 2 获取数据
+        // localStorage.getItem('键')
+        console.log(localStorage.getItem('nenm'));    //赵元清
+
+        // 删除数据
+        // localStorage.removeItem('键')
+        localStorage.removeItem('nenm')
+
+        // 存储复杂数据类型
+        let obj = {      
+            name: '赵元清',
+            age: 18,
+            address: '老婆'
+        }
+        // console.log(JSON.stringify(obj));
+        localStorage.setItem('obj', JSON.stringify(obj))    // 这里第二个不需要加引号
+
+
+        // JSON字符串 都是 双引号  后台给的数据一般都是这种
+        let objs = {      
+            "name": "赵元清",
+            "age": "18",
+            "address": "老婆"
+        }
+
+        // 复杂数据类型一定要转换JSON字符串再存储
+        // 本地存储无法存储复杂数据类型所以要用JSON.stringify(复杂数据类型) 将复杂数据转换成JSON字符串 存储到本地
+
+        // 取数据  JSON.parse
+        // 再将JSON字符串转换成对象 JSON.parse(JSON字符串) 取出 使用
+        console.log(JSON.parse(localStorage.getItem('obj')))
+    </script>
+</body>
+
+</html>

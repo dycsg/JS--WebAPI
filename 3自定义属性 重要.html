@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box"></div>
+
+    <div class="d" data-name="dyc" data-age="19"></div>
+
+    <script>
+        let box = document.querySelector('.box')
+        let d = document.querySelector('.d')
+        // 设置自定义属性
+        box.setAttribute('myid', 10)
+        console.log(box.getAttribute('myid'));  //10
+
+        // 自定义属性规范 一般以data-开头      获取自定义属性：dataset  重要
+        console.log(d.dataset);
+        console.log(d.dataset.name)   //dyc
+    </script>
+</body>
+</html>

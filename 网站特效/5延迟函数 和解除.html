@@ -24,11 +24,23 @@
 
 <body>
     <div class="box"></div>
-    <button></button>
+    <button>解除延迟器</button>
 
     <script>
         // 获取元素
         let box = document.querySelector('.box')
+        let btn = document.querySelector('button')
+        // 定义延迟器
+        let timer = setTimeout(function () {
+            box.style.display = 'none'
+        }, 5000)
+        // 解除延迟器
+        btn.addEventListener('click', function () {
+            alert('已清除')
+            clearTimeout(timer)
+        })
+
+
     </script>
 </body>
 

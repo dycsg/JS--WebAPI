@@ -18,7 +18,10 @@
         let div = document.querySelector('div');
         div.addEventListener('click', function (e) {
             e.stopPropagation();
+            e.preventDefault();  //阻止默认行为
         });
+
+
     </script>
 </body>
 

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        thead td {
+            padding: 5px 20px;
+            border: none;
+            border-right: 1px solid black;
+        }
+
+        table {
+            margin: 0 auto;
+
+        }
+
+        .info {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        tbody {
+            margin: 0 auto;
+        }
+
+        tbody td {
+            padding: 5px 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <br>
+    <div class="info">
+        姓名：<input type="text" class="name">
+        年龄：<input type="text" class="age">
+        <!-- 这里的value一定要写 -->
+        性别：<select name="xb" id="" class="xb">
+            <option value="男">男</option>
+            <option value="女">女</option>
+        </select>
+        薪资：<input type="text" class="xz">
+        <!-- 这里的value一定要写 -->
+        地址：<select name="dz" id="" class="dz">
+            <option value="江西">江西</option>
+            <option value="上海">上海</option>
+            <option value="南昌">南昌</option>
+        </select>
+
+        <button class="add">录入</button>
+    </div>
+    <br><br>
+    <table border="1">
+        <thead style="background-color: aquamarine;">
+            <tr class="hdtr">
+                <td>学号</td>
+                <td>姓名</td>
+                <td>年龄</td>
+                <td>性别</td>
+                <td>薪资</td>
+                <td>工作城市</td>
+                <td>操作</td>
+            </tr>
+        </thead>
+        <tbody class="bdtr">
+            <!-- <tr>
+                <td>123</td>
+                <td>xss</td>
+                <td>sxs</td>
+                <td>xs</td>
+                <td>xs</td>
+                <td>sx</td>
+                <td>xs</td>
+            </tr> -->
+        </tbody>
+    </table>
+    <script>
+
+        // 一. 读取本地存储数据 封装成函数
+        function getLocalData() {
+            // 读取本地存储数据 给datas
+            let datas = localStorage.getItem('datas')
+            // 判断是否有数据
+            if (datas) {
+                // 如果有数据 返回JSON.parse() 之后的对象
+                return JSON.parse(datas)
+            } else {
+                // 如果本地存储没有数据 则写入默认死数据 注意要用JSON.stringify() 转换复杂数据类型 再存储
+                // 1.死数据
+                let data = [
+                    { stuId: 1001, uname: 'dyc', age: 19, gender: '男', salary: '20000', city: '南昌' },
+                    { stuId: 1002, uname: '菜市场', age: 23, gender: '男', salary: '40000', city: '赣州' },
+                    { stuId: 1003, uname: '长度', age: 18, gender: '女', salary: '23000', city: '广州' },
+                    { stuId: 1004, uname: '陈年旧事', age: 17, gender: '男', salary: '34000', city: '上海' },
+                    { stuId: 1005, uname: '吃素菜', age: 25, gender: '女', salary: '32000', city: '北京' },
+                ]
+                // 再写入本地存储 转换
+                localStorage.setItem('datas', JSON.stringify(data));
+                // 执行完上面一句代码 就有数据了 它会进行转换JSON.parse
+            }
+        }
+        // 调用读取本地存储函数
+        getLocalData()
+
+        // 获取元素
+        let name = document.querySelector('.name')
+        let ages = document.querySelector('.age')
+        let xb = document.querySelector('.xb')
+        let xz = document.querySelector('.xz')
+        let dz = document.querySelector('.dz')
+        let add = document.querySelector('.add')
+
+        let hdtr = document.querySelector('.hdtr')
+        let bdtr = document.querySelector('.bdtr')
+
+        // 因为要多次用到渲染 所有可以封装函数
+
+        function render() {
+            // 二. 渲染模块 转换好的数据 重新赋值  调用上面的函数   局部变量
+            let data = getLocalData()
+
+            // 为了防止添加完数据导致重复数据渲染 先清空  tbody 里面原来的数据 
+            bdtr.innerHTML = ''
+
+            // 判断数据有多少条就创建多少个tr  遍历
+            for (let i = 0; i < data.length; i++) {
+                // 创建tr
+                let tr = document.createElement('tr')
+                //放内容
+                tr.innerHTML = `
+                    <td>${data[i].stuId}</td>
+                    <td>${data[i].uname}</td>
+                    <td>${data[i].age}</td>
+                    <td>${data[i].gender}</td>
+                    <td>${data[i].salary}</td>
+                    <td>${data[i].city}</td>
+                    <td><a href="javascript:;" data-id="${i}">删除</a></td>      
+                `
+                // a 里面的 ${i} for循环产生的   0  data-id是自定义属性 
+
+                // 添加到父级tbody
+                bdtr.appendChild(tr)
+
+            }
+        }
+        render()   //先调用
+
+        // 点击录入添加数据渲染页面
+        add.addEventListener("click", function (e) {
+
+            // 三.添加模块
+            // 先取到最新的本地存储数据， 然后追加
+            let data = getLocalData()
+
+            // 把用户输入的value 值拿过来 在添加到push 数组里面
+            data.push({
+                stuId: data[data.length - 1].stuId + 1,
+                uname: name.value,
+                age: ages.value,
+                gender: xb.value,
+                salary: xz.value,
+                city: dz.value
+            })
+
+            // 四. 存储到本地存储
+            localStorage.setItem('datas', JSON.stringify(data));
+
+
+            // console.log(data);
+            render() //再渲染页面   
+            // 清空输入框的内容
+            name.value = ''
+            ages.value = ''
+            xb.value = '男'
+            xz.value = ''
+            dz.value = '江西'
+        })
+
+        // 删除操作   因为数据太多 所有用事件委托  给父级添加事件委托给孩子
+        bdtr.addEventListener('click', function (e) {
+
+            // 五.读取本地存储里面的数据
+            let data = getLocalData()
+
+            // console.log(e.target.tagName);    //这里target 能返回点击了哪个元素  tagName 能返回 元素名 大写 要加''
+            if (e.target.tagName === 'A') {        //A 就是a标签
+                // 删除的是数组里面的数据，
+                // 我们给每一个a标签添加一个属性 id 来判断我们点击了哪个tr 就删除谁   131行
+                // data.splice(从哪个删，删1个)
+                // console.log(e.target.id);
+
+                // 第一条不允许删除
+                if (e.target.dataset.id === '0') {
+                    alert('当前数据不允许删除')
+                    return
+                }
+
+                data.splice(e.target.dataset.id, 1)     //dataset获取自定义属性
+
+                // 六. 存储到本地存储
+                localStorage.setItem('datas', JSON.stringify(data));
+
+                render()   //重新渲染页面
+            }
+        })
+    </script>
+</body>
+
+</html>

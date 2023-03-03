@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .box {
+            margin: 0 auto;
+            width: 200px;
+            height: 3000px;
+            background-color: pink;
+        }
+
+        button {
+            position: absolute;
+            top: 900px;
+            left: 720px;
+            ;
+            float: right;
+            display: none;
+            transition: all 1s;
+        }
+
+        .hd {
+            position: fixed;;
+            z-index: 999;
+            transition: all 1s;
+            top: -40px;
+            width: 100%;
+            height: 40px;
+            background-color: blueviolet;
+        }
+
+        .ms {
+            position: absolute;
+            top: 800px;
+            left: 520px;
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hd"></div>
+    <div class="box"></div>
+    <button>返回顶部</button>
+    <div class="ms">秒杀</div>
+    <script>
+        // 获取元素
+        let hd = document.querySelector('.hd')
+        let ms = document.querySelector('.ms')
+        // console.log(ms.offsetTop);
+
+        window.addEventListener('scroll', function () {
+            if (document.documentElement.scrollTop >= ms.offsetTop) {
+                hd.style.top = '0px'
+            } else{
+                hd.style.top = '-40px'
+            }
+        })
+    </script>
+</body>
+
+</html>

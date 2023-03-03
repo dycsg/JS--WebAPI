@@ -13,7 +13,9 @@
             list-style: none;
             text-decoration: none;
         }
-
+        body{
+            height: 3000px;
+        }
         .box {
             width: 200px;
             height: 200px;
@@ -29,6 +31,19 @@
     <script>
         // 获取元素
         let box = document.querySelector('.box')
+        // scroll  滚动事件
+        window.addEventListener('scroll', function(){
+            console.log(111);
+        })
+
+        // 加载事件
+        document.addEventListener('load', function(){
+            console.log();
+        })
+        // 加载事件
+        document.addEventListener('DOMContentLoaded', function(){
+            console.log(11);
+        })
     </script>
 </body>
 

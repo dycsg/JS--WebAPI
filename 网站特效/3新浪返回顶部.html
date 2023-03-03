@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .box {
+            margin: 0 auto;
+            width: 200px;
+            height: 3000px;
+            background-color: pink;
+        }
+
+        button {
+            position: absolute;
+            top: 900px;
+            left: 720px;
+            ;
+            float: right;
+            display: none;
+            transition: all 1s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <button>返回顶部</button>
+
+    <script>
+        // 获取元素
+        let box = document.querySelector('.box')
+        let btn = document.querySelector('button')
+
+        window.addEventListener('scroll', function () {
+            // console.log(document.documentElement.scrollTop);
+            if (document.documentElement.scrollTop >= 500) {
+                btn.style.display = 'block'
+            } else {
+                btn.style.display = 'none'
+            }
+        })
+        btn.addEventListener('click', function () {
+            document.documentElement.scrollTop = 0
+        })
+    </script>
+</body>
+
+</html>
