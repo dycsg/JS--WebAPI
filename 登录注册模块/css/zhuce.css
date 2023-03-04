@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+.box{
+    background-color: pink;
+    width: 400px;
+    height: 500px;
+    margin: 80px auto;
+}   
+.box h1{
+    color: azure;
+    text-align: center;
+} 
+.box .xtx-form-item{
+    margin: 15px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.xtx-form-item input{
+    width: 190px;
+    height: 38px;
+    padding-left: 4px;
+}
+.xtx-form-item .xieyi{
+    font-size: 8px;
+    color: azure;
+}
+.xtx-form-item .submit{
+    width: 190px;
+    height: 38px;
+    background-color: #ff8400;
+    border: none;
+    border-radius:4px
+}
+.xtx-form-item .code-item{
+    position: relative;
+}
+.xtx-form-item .codem{
+    background: none;
+    border: none;
+    font-size: 12px;
+    top: 30%;
+    left: 65%;
+    position: absolute;
+    color: #ff8400;
+}

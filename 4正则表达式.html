@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .zq {
+            color: green;
+        }
+
+        .cw {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text">
+    <span></span>
+    <script>
+        // 准备数据
+        let str = 'xjs , 8sxshu ,jcdj,前端， 产品经理'
+        // 定义正则
+        let ser = /前端/
+        // 检测正则 用 test()
+        let sum = ser.test(str)
+        // 返回的布尔值  
+        console.log(sum);  //true
+
+        // 还有exec()方法
+
+        // 元字符
+        // 边界符： ^以开头   $以结尾   详情看img边界符
+        // 如果两个都加了 就是 精确匹配
+
+        // /{3,6}/
+        // 表示用户只能输入 3位以上6位以下
+        // /[a-zA-Z]/
+        // 不区分大小写
+
+        // 案例
+        // 要求用户只能输入英文大小写数字和下划线中划线  6到16位
+        let input = document.querySelector('input');
+        let span = document.querySelector('span');
+        input.addEventListener('blur', function () {
+            if (/^[a-zA-Z0-9-_]{6,16}$/.test(input.value)) {
+                span.className = 'zq'
+                span.innerHTML = '输入正确！'
+            } else {
+                span.className = 'cw'
+                span.innerHTML = '格式错误！'
+            }
+        })
+
+    //中文 /^[\u4e00-\u9fa5]{2,8}$/
+
+
+    // \d  等于 0-9
+    // \w  等于 A-Za-z0-9
+
+    // [^]  除了
+
+
+    // 敏感词过滤正则
+    // /傻逼||sb/g/
+
+    // 可以使用 replace(正则, '**')  替换
+
+    // input.value.replace(/傻逼||sb/g/ , '**')
+    </script>
+</body>
+
+</html>

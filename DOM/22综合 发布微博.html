@@ -105,15 +105,37 @@
         let size = document.querySelector('.size');
         let ul = document.querySelector('ul');
 
-        // 数据
-        let data = [
-            { uname: '丁延迟', imaSrc: '/img/01 (1).jpg' },
-            { uname: '谢艳玲', imaSrc: '/img/01 (2).jpg' },
-            { uname: '王勇', imaSrc: '/img/01 (3).jpg' },
-            { uname: '驾驶员', imaSrc: '/img/01 (4).jpg' },
-            { uname: '数学系', imaSrc: '/img/01 (1).jpg' },
-            { uname: '型设计', imaSrc: '/img/01 (4).jpg' },
-        ]
+        // 一. 读取本地存储数据 封装成函数
+        function getLocalData() {
+            // 读取本地存储数据 给datas
+            let datas = localStorage.getItem('datas')
+            // 判断是否有数据
+            if (datas) {
+                // 如果有数据 返回JSON.parse() 之后的对象
+                return JSON.parse(datas)
+            } else {
+                // 如果本地存储没有数据 则写入默认死数据 注意要用JSON.stringify() 转换复杂数据类型 再存储
+                // 1.死数据
+                // 数据
+                let data = [
+                    { uname: '丁延迟', imaSrc: '/img/01 (1).jpg' },
+                    { uname: '谢艳玲', imaSrc: '/img/01 (2).jpg' },
+                    { uname: '王勇', imaSrc: '/img/01 (3).jpg' },
+                    { uname: '驾驶员', imaSrc: '/img/01 (4).jpg' },
+                    { uname: '数学系', imaSrc: '/img/01 (1).jpg' },
+                    { uname: '型设计', imaSrc: '/img/01 (4).jpg' },
+                ]
+                // 再写入本地存储 转换
+                localStorage.setItem('datas', JSON.stringify(data));
+                // 执行完上面一句代码 就有数据了 它会进行转换JSON.parse
+            }
+        }
+        // 调用读取本地存储函数
+        getLocalData()
+
+
+
+
         // 1.检查长度
         textarea.addEventListener('input', function () {
             // console.log(textarea.value.length);
@@ -133,13 +155,20 @@
                 return alert('请输入内容')
 
             } else {
-                alert('发布成功')
+
+                // 二. 渲染模块 转换好的数据 重新赋值  调用上面的函数   局部变量
+                let data = getLocalData()
+
 
                 // 随机函数
                 function getRandom(max, min) {
                     return Math.floor(Math.random() * (max - min + 1)) + min;
                 }
+
+                
                 let shuiji = getRandom(0, data.length - 1)
+
+
 
                 // 3.创建小li 
                 let li = document.createElement('li')
@@ -151,16 +180,29 @@
                     <div class="gb">x</div>
                 `
 
+                // 四. 存储到本地存储
+                localStorage.setItem('datas', JSON.stringify(data));
+
+
+
                 // 4.删除操作
                 let del = li.querySelector('.gb')
                 del.addEventListener('click', function () {
+
+                    // 五.读取本地存储里面的数据
+                    let data = getLocalData()
+
                     // 点击的是x 删除的是li
                     ul.removeChild(li)
+
+                    // 六. 存储到本地存储
+                    localStorage.setItem('datas', JSON.stringify(data));
+
+
                 })
 
                 // 发布到前面 
                 ul.insertBefore(li, ul.children[0])
-
 
                 // 5. 清空文本域 
                 textarea.value = ''
